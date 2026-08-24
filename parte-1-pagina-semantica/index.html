@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio web oficial, semántico y accesible de Julián Dallos, estudiante de Ingeniería de Sistemas de la Universidad de Santander UDES, Bucaramanga 2026.">
+  <meta name="author" content="Julián Dallos">
+  <meta name="robots" content="index, follow">
+  <title>Julián Dallos | Portafolio Web e Ingeniería de Sistemas UDES</title>
+  <style>
+    :root {
+      --bg-main: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-card: #334155;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --secondary: #818cf8;
+      --accent: #34d399;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #475569;
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-bottom: 2px solid var(--primary);
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    nav {
+      background-color: rgba(30, 41, 59, 0.9);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin: 0 auto;
+      max-width: 950px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    nav a:hover, nav a:focus {
+      background-color: var(--primary);
+      color: var(--bg-main);
+      outline: 2px solid var(--primary);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2.3fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 860px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    section h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    section h3 {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    figure {
+      margin: 1.5rem 0;
+      text-align: center;
+      background-color: var(--bg-card);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    figure img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      display: inline-block;
+    }
+
+    figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    dl {
+      background-color: var(--bg-card);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    dt {
+      font-weight: bold;
+      color: var(--primary);
+      margin-top: 0.5rem;
+    }
+
+    dt:first-child {
+      margin-top: 0;
+    }
+
+    dd {
+      margin-left: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    article {
+      background-color: var(--bg-card);
+      border-left: 4px solid var(--secondary);
+      padding: 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 1.25rem;
+    }
+
+    article:last-of-type {
+      margin-bottom: 0;
+    }
+
+    article h3 {
+      margin-top: 0;
+      color: var(--text-main);
+      font-size: 1.2rem;
+    }
+
+    article time {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    article p {
+      margin-bottom: 0.5rem;
+    }
+
+    article a {
+      color: var(--primary);
+      text-decoration: underline;
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    article a:hover {
+      color: var(--primary-hover);
+    }
+
+    video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      background-color: #000;
+    }
+
+    details {
+      background-color: var(--bg-card);
+      padding: 0.85rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+    }
+
+    summary {
+      font-weight: bold;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    summary:hover {
+      color: var(--primary);
+    }
+
+    details p {
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    mark {
+      background-color: #fef08a;
+      color: #713f12;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    aside {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: fit-content;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    aside h2 {
+      font-size: 1.3rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.4rem;
+    }
+
+    aside h3 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    aside ul {
+      list-style-type: square;
+      margin-left: 1.25rem;
+    }
+
+    aside a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    aside a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #0b1120;
+      border-top: 2px solid var(--border-color);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer nav {
+      margin-bottom: 1.5rem;
+      background-color: transparent;
+      padding: 0;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    address {
+      font-style: normal;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    address a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    address a:hover {
+      text-decoration: underline;
+    }
+
+    small {
+      display: block;
+      margin-top: 1.25rem;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado Principal Semántico -->
+  <header>
+    <h1>Julián Dallos</h1>
+    <p>Ingeniería de Sistemas — Séptimo Semestre | Universidad de Santander (UDES)</p>
+    
+    <!-- Navegación Principal Accesible -->
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#sobre-mi">Sobre Mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#logros">Logros</a></li>
+        <li><a href="#multimedia">Multimedia</a></li>
+        <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="../parte-2-formulario-registro/registro.html">Formulario de Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenedor de Estructura de Dos Columnas -->
+  <div class="container">
+
+    <!-- Contenido Principal -->
+    <main>
+
+      <!-- Sección 1: Sobre Mí -->
+      <section id="sobre-mi">
+        <h2>Sobre Mí y Perfil Profesional</h2>
+        <p>
+          Julián Dallos es un estudiante de séptimo semestre de <strong>Ingeniería de Sistemas</strong> en la Universidad de Santander (UDES), campus Bucaramanga. Su formación técnica y académica está orientada hacia el desarrollo de soluciones de software escalables, arquitectura orientada a servicios, optimización de bases de datos relacionales y la aplicación rigurosa de estándares semánticos HTML5 y directrices de accesibilidad web universal (WCAG 2.1).
+        </p>
+
+        <!-- Figura con Fotografía de Perfil Profesional -->
+        <figure>
+          <img src="img/perfil.jpg" alt="Fotografía profesional de Julián Dallos en la Universidad de Santander" width="150" height="150" loading="eager">
+          <figcaption>Figura 1: Fotografía de perfil profesional — Julián Dallos (Ingeniería de Sistemas UDES).</figcaption>
+        </figure>
+      </section>
+
+      <!-- Sección 2: Proyectos de Software -->
+      <section id="proyectos">
+        <h2>Proyectos de Software Destacados</h2>
+        <p>Módulos de ingeniería y aplicaciones autónomas desarrolladas con enfoque en calidad de código y rendimiento:</p>
+
+        <!-- Artículo de Proyecto 1 -->
+        <article id="proyecto-inventarios">
+          <h3>Sistema de Gestión de Inventarios en la Nube</h3>
+          <time datetime="2026-03-10">10 de marzo de 2026</time>
+          <p>
+            Plataforma web distribuida para la administración, trazabilidad y control de inventarios en tiempo real para el sector comercial. Implementa una arquitectura basada en microservicios, autenticación stateless con JWT, cache distribuido y generación automatizada de reportes analíticos.
+          </p>
+          <p>
+            <strong>Tecnologías utilizadas:</strong> Node.js, Express, PostgreSQL, Docker, Redis, RESTful APIs.
+          </p>
+          <a href="https://github.com/dallosjulian/sistema-inventarios-cloud" target="_blank" rel="noopener noreferrer">Ver repositorio del proyecto en GitHub (Abre en ventana nueva)</a>
+        </article>
+
+        <!-- Artículo de Proyecto 2 -->
+        <article id="proyecto-pagos">
+          <h3>Microservicio de Procesamiento de Pagos Seguros</h3>
+          <time datetime="2026-04-18">18 de abril de 2026</time>
+          <p>
+            Motor de transacciones financieras asíncronas con tolerancia a fallos, enrutamiento idempotente y cumplimiento de estándares de seguridad OWASP. Diseñado bajo el patrón de arquitectura hexagonal (Ports &amp; Adapters) con mensajería distribuida para procesamiento desacoplado.
+          </p>
+          <p>
+            <strong>Tecnologías utilizadas:</strong> Java 17, Spring Boot, Apache Kafka, PostgreSQL, Docker, OAuth2.
+          </p>
+          <a href="https://github.com/dallosjulian/microservicio-pagos-seguros" target="_blank" rel="noopener noreferrer">Ver código fuente en GitHub (Abre en ventana nueva)</a>
+        </article>
+      </section>
+
+      <!-- Sección 3: Logros y Certificaciones (Decisión de Diseño 1 - Opción A) -->
+      <section id="logros">
+        <h2>Logros y Certificaciones Académicas</h2>
+        <p>Credenciales técnicas independientes y certificaciones profesionales que avalan competencias en ingeniería de software:</p>
+
+        <!-- Artículo de Logro 1 -->
+        <article id="cert-frontend-wcag">
+          <h3>Certificación Profesional en Desarrollo Web Frontend y Accesibilidad W3C</h3>
+          <time datetime="2026-02-20">20 de febrero de 2026</time>
+          <p>
+            Acreditación especializada en maquetación semántica HTML5, diseño responsivo avanzado con CSS3 y cumplimiento estricto de las directrices WCAG 2.1 Nivel AA para la creación de interfaces web universales e inclusivas.
+          </p>
+          <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">Consultar estándar oficial WCAG W3C (Abre en ventana nueva)</a>
+        </article>
+
+        <!-- Artículo de Logro 2 -->
+        <article id="cert-cloud-architecture">
+          <h3>Acreditación Internacional en Arquitectura Cloud y Microservicios</h3>
+          <time datetime="2026-05-12">12 de mayo de 2026</time>
+          <p>
+            Formación técnica avanzada en diseño de soluciones nativas en la nube, contenedorización con Docker, orquestación de contenedores, patrones de resiliencia (Circuit Breaker) y automatización de despliegues continuos CI/CD.
+          </p>
+          <a href="https://udes.edu.co" target="_blank" rel="noopener noreferrer">Verificación institucional UDES (Abre en ventana nueva)</a>
+        </article>
+      </section>
+
+      <!-- Sección 4: Presentación Multimedia (Decisión de Diseño 2 - Opción A) -->
+      <section id="multimedia">
+        <h2>Presentación Multimedia y Accesibilidad</h2>
+        <p>
+          Recurso audiovisual de presentación personal y académica con controles interactivos nativos, soporte multiformato y subtítulos sincronizados en formato WebVTT, garantizando conformidad con el principio de Perceptibilidad de WCAG 2.1.
+        </p>
+
+        <figure>
+          <video controls poster="img/miniatura-intro.jpg" preload="metadata" width="720" height="405">
+            <source src="video/intro.mp4" type="video/mp4">
+            <source src="video/intro.webm" type="video/webm">
+            <track kind="captions" src="video/intro-es.vtt" srclang="es" label="Español" default>
+            <p>
+              Su navegador web no soporta la reproducción nativa de video en HTML5. Puede
+              <a href="video/intro.mp4" download>descargar el video de presentación aquí</a>.
+            </p>
+          </video>
+          <figcaption>Figura 2: Video de presentación académica de Julián Dallos con subtítulos en español (intro-es.vtt).</figcaption>
+        </figure>
+      </section>
+
+      <!-- Sección 5: Preguntas Frecuentes -->
+      <section id="preguntas-frecuentes">
+        <h2>Preguntas Frecuentes (FAQ)</h2>
+        
+        <details>
+          <summary>¿Cuál es la importancia de la estructura semántica en el desarrollo web?</summary>
+          <p>
+            La semántica permite a los navegadores, motores de búsqueda y tecnologías de asistencia comprender el <mark>propósito y significado estructural</mark> de cada bloque de contenido, optimizando la accesibilidad universal, el mantenimiento del código y el posicionamiento SEO orgánico.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Cómo contribuye el uso del formato WebVTT a la accesibilidad digital?</summary>
+          <p>
+            El formato WebVTT garantiza que personas con discapacidades auditivas o usuarios en entornos de reproducción silenciosa accedan al mensaje sonoro, satisfaciendo el <mark>Criterio de Éxito 1.2.2 de WCAG 2.1</mark> para subtítulos pregrabados.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Por qué se debe validar el código HTML mediante los estándares del W3C?</summary>
+          <p>
+            La validación formal W3C certifica la <mark>interoperabilidad multiplataforma</mark>, previene fallos sintácticos de renderizado entre navegadores y garantiza la calidad técnica exigida en la formación de un Ingeniero de Sistemas profesional.
+          </p>
+        </details>
+      </section>
+
+    </main>
+
+    <!-- Barra Lateral: Habilidades y Listas Técnicas -->
+    <aside id="habilidades" aria-label="Habilidades técnicas y glosario">
+      <h2>Habilidades Técnicas</h2>
+
+      <!-- Lista No Ordenada: Tecnologías de Software y Backend -->
+      <h3>Tecnologías de Backend y Software</h3>
+      <p>Herramientas y lenguajes aplicados en la construcción de sistemas robustos:</p>
+      <ul>
+        <li><strong>Lenguajes:</strong> Java, JavaScript (ES6+), TypeScript, SQL.</li>
+        <li><strong>Frameworks:</strong> Spring Boot, Node.js, Express.js.</li>
+        <li><strong>Bases de Datos:</strong> PostgreSQL, MySQL, Redis.</li>
+        <li><strong>DevOps y Nube:</strong> Docker, Git, GitHub Actions, AWS.</li>
+        <li><strong>Estándares:</strong> HTML5 Semántico, CSS3, WAI-ARIA.</li>
+      </ul>
+
+      <!-- Lista Ordenada: Ciclo de Desarrollo y Despliegue -->
+      <h3>Ciclo de Desarrollo y Despliegue</h3>
+      <p>Metodología secuencial de ingeniería aplicada en cada proyecto:</p>
+      <ol>
+        <li><strong>Análisis y Requisitos:</strong> Definición de especificaciones y modelos C4.</li>
+        <li><strong>Diseño de Arquitectura:</strong> Modelado semántico y patrones de software.</li>
+        <li><strong>Desarrollo y TDD:</strong> Implementación limpia y pruebas unitarias.</li>
+        <li><strong>Auditoría WCAG:</strong> Verificación de accesibilidad y validación W3C.</li>
+        <li><strong>Despliegue CI/CD:</strong> Contenedorización y publicación continua.</li>
+      </ol>
+
+      <!-- Lista de Definición: Glosario de Términos Técnicos -->
+      <h3>Glosario de Ingeniería Web</h3>
+      <dl>
+        <dt>Semántica Web</dt>
+        <dd>Uso riguroso de elementos HTML según su significado funcional intrínseco, favoreciendo la interpretación computacional del contenido.</dd>
+
+        <dt>Accesibilidad WCAG 2.1</dt>
+        <dd>Pautas técnicas de accesibilidad estructuradas en cuatro principios esenciales: Perceptible, Operable, Comprensible y Robusto.</dd>
+
+        <dt>Clean Code</dt>
+        <dd>Prácticas de ingeniería enfocadas en escribir código legible, testeable, mantenible y desacoplado mediante principios SOLID.</dd>
+      </dl>
+
+      <!-- Datos Académicos del Estudiante -->
+      <h3>Información Académica</h3>
+      <p><strong>Estudiante:</strong> Julián Dallos</p>
+      <p><strong>Programa:</strong> Ingeniería de Sistemas</p>
+      <p><strong>Semestre:</strong> Séptimo (7.°)</p>
+      <p><strong>Institución:</strong> Universidad de Santander (UDES)</p>
+      <p><strong>Año:</strong> 2026</p>
+    </aside>
+
+  </div>
+
+  <!-- Pie de Página Semántico -->
+  <footer id="contacto">
+    <!-- Navegación Secundaria del Pie de Página -->
+    <nav aria-label="Navegación del pie de página">
+      <ul>
+        <li><a href="#sobre-mi">Sobre Mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#logros">Logros</a></li>
+        <li><a href="#multimedia">Multimedia</a></li>
+        <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+        <li><a href="../parte-2-formulario-registro/registro.html">Registro</a></li>
+      </ul>
+    </nav>
+
+    <address>
+      Contacto institucional: <a href="mailto:j.dallos@correo.udes.edu.co">j.dallos@correo.udes.edu.co</a><br>
+      Perfil de GitHub: <a href="https://github.com/dallosjulian" target="_blank" rel="noopener noreferrer">github.com/dallosjulian</a><br>
+      Universidad de Santander (UDES), Campus Lagos del Cacique, Bucaramanga, Santander, Colombia.
+    </address>
+
+    <small>&copy; 2026 Julián Dallos — Universidad de Santander (UDES). Todos los derechos reservados.</small>
+  </footer>
+
+</body>
+</html>
