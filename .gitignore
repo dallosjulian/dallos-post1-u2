@@ -1,0 +1,43 @@
+# ==============================================================================
+# .gitignore - dallos-post1-u2
+# Estudiante: Julián Dallos
+# Proyecto: Laboratorio Unidad 2 - Programación Web (UDES 2026)
+# ==============================================================================
+
+# Archivos del Sistema Operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Entornos de Desarrollo e IDEs
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# Archivos Temporales y Logs
+*.log
+*.tmp
+*.bak
+*.orig
+*~
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
