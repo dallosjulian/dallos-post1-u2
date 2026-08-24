@@ -176,11 +176,12 @@
       gap: 1rem;
     }
 
-    label {
+    label, .label {
       font-weight: 600;
       color: var(--text-main);
       font-size: 0.95rem;
       letter-spacing: 0.01em;
+      display: block;
     }
 
     .help-text {
@@ -521,7 +522,7 @@
 
           <!-- Inputs Radio: Jornada Académica -->
           <div class="form-row">
-            <label id="jornada-label">Jornada Académica *</label>
+            <span class="label" id="jornada-label">Jornada Académica *</span>
             <div class="radio-stack" role="radiogroup" aria-labelledby="jornada-label">
               <div class="radio-option">
                 <input type="radio" id="jornada-diurna" name="jornada" value="diurna" checked required>
@@ -590,8 +591,8 @@
 
           <!-- Inputs Checkbox: Áreas de Interés Técnico -->
           <div class="form-row">
-            <label>Áreas de Interés Técnico:</label>
-            <div class="checkbox-stack">
+            <span class="label" id="interes-label">Áreas de Interés Técnico:</span>
+            <div class="checkbox-stack" role="group" aria-labelledby="interes-label">
               <div class="checkbox-option">
                 <input type="checkbox" id="interes-frontend" name="areas_interes[]" value="frontend" checked>
                 <label for="interes-frontend">Desarrollo Web Frontend y Accesibilidad</label>
