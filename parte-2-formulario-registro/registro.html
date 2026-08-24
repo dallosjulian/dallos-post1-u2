@@ -9,19 +9,25 @@
   <title>Formulario de Registro Académico | Ingeniería UDES 2026</title>
   <style>
     :root {
-      --bg-main: #0f172a;
-      --bg-surface: #1e293b;
-      --bg-card: #334155;
-      --primary: #38bdf8;
-      --primary-hover: #0ea5e9;
-      --secondary: #818cf8;
-      --accent: #34d399;
-      --success: #10b981;
-      --text-main: #f8fafc;
+      --bg-canvas: #070a13;
+      --bg-card: rgba(16, 24, 46, 0.75);
+      --bg-surface: #0e1628;
+      --bg-input: #0a0f1d;
+      --primary: #10b981;
+      --primary-glow: rgba(16, 185, 129, 0.25);
+      --primary-hover: #059669;
+      --secondary: #6366f1;
+      --secondary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #38bdf8;
+      --text-main: #f1f5f9;
+      --text-body: #cbd5e1;
       --text-muted: #94a3b8;
-      --border-color: #475569;
-      --focus-ring: #38bdf8;
-      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      --border-subtle: rgba(148, 163, 184, 0.15);
+      --border-focus: #10b981;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     * {
@@ -32,39 +38,63 @@
 
     body {
       font-family: var(--font-family);
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-body);
+      line-height: 1.7;
       padding: 0;
     }
 
+    /* Encabezado Superior */
     header {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border-bottom: 2px solid var(--primary);
-      padding: 2.5rem 1.5rem 1.5rem;
+      background: linear-gradient(180deg, rgba(14, 22, 40, 0.95) 0%, rgba(7, 10, 19, 0.85) 100%);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
+      font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(135deg, #ffffff 40%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     header p {
-      color: var(--primary);
+      color: var(--accent);
       font-size: 1.05rem;
       font-weight: 500;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.6rem;
     }
 
     nav {
-      background-color: rgba(30, 41, 59, 0.9);
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
+      background: rgba(16, 24, 46, 0.85);
+      border: 1px solid var(--border-subtle);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-lg);
       margin: 0 auto;
-      max-width: 800px;
+      max-width: 600px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
     nav ul {
@@ -76,83 +106,89 @@
     }
 
     nav a {
-      color: var(--text-main);
+      color: var(--text-body);
       text-decoration: none;
       font-weight: 600;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      font-size: 0.92rem;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.25s ease;
     }
 
     nav a:hover, nav a:focus {
-      background-color: var(--primary);
-      color: var(--bg-main);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
       outline: 2px solid var(--primary);
     }
 
-    .main-wrapper {
-      max-width: 860px;
-      margin: 2rem auto;
+    /* Contenedor Principal del Formulario */
+    .form-container {
+      max-width: 880px;
+      margin: 3rem auto;
       padding: 0 1.5rem;
     }
 
     form {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.2rem;
     }
 
+    /* Agrupaciones Fieldset con Leyendas Destacadas */
     fieldset {
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1.5rem;
-      background-color: rgba(51, 65, 85, 0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      background: rgba(10, 15, 29, 0.5);
+      position: relative;
     }
 
     legend {
-      color: var(--primary);
-      font-size: 1.25rem;
-      font-weight: bold;
-      padding: 0 0.6rem;
-      border-radius: 4px;
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 4px 12px var(--primary-glow);
     }
 
-    .form-group {
-      margin-bottom: 1.25rem;
+    .form-row {
+      margin-bottom: 1.4rem;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
 
-    .form-group:last-child {
+    .form-row:last-child {
       margin-bottom: 0;
     }
 
-    .form-group.horizontal {
+    .form-row.inline {
       flex-direction: row;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
     label {
       font-weight: 600;
       color: var(--text-main);
       font-size: 0.95rem;
+      letter-spacing: 0.01em;
     }
 
     .help-text {
       font-size: 0.82rem;
       color: var(--text-muted);
-      margin-top: 0.2rem;
     }
 
+    /* Controles de Formulario e Inputs */
     input[type="text"],
     input[type="email"],
     input[type="tel"],
@@ -163,31 +199,32 @@
     select,
     textarea {
       width: 100%;
-      padding: 0.65rem 0.85rem;
-      background-color: #0f172a;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
       color: var(--text-main);
       font-family: inherit;
       font-size: 0.95rem;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     input:focus,
     select:focus,
     textarea:focus {
       outline: none;
-      border-color: var(--focus-ring);
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+      background-color: #0e1628;
     }
 
     input[type="color"] {
       width: 60px;
-      height: 40px;
+      height: 42px;
       padding: 0.2rem;
-      background-color: #0f172a;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
       cursor: pointer;
     }
 
@@ -197,43 +234,45 @@
       accent-color: var(--primary);
     }
 
-    .range-container {
+    .range-box {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
 
     output {
-      display: inline-block;
-      min-width: 2.5rem;
-      text-align: center;
-      background-color: var(--primary);
-      color: var(--bg-main);
-      font-weight: bold;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.8rem;
+      height: 2.2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 8px var(--primary-glow);
     }
 
     input[type="file"] {
-      background-color: #0f172a;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 0.5rem;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem;
       color: var(--text-muted);
       cursor: pointer;
     }
 
-    .radio-group, .checkbox-group {
+    .radio-stack, .checkbox-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
       margin-top: 0.4rem;
     }
 
-    .radio-item, .checkbox-item {
+    .radio-option, .checkbox-option {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     input[type="radio"], input[type="checkbox"] {
@@ -243,60 +282,65 @@
       cursor: pointer;
     }
 
-    .actions {
+    /* Botones de Acción */
+    .button-group {
       display: flex;
-      gap: 1rem;
+      gap: 1.25rem;
       justify-content: flex-end;
       margin-top: 1rem;
     }
 
     button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
+      padding: 0.85rem 1.8rem;
+      font-size: 0.98rem;
+      font-weight: 700;
       border: none;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     button[type="submit"] {
-      background-color: var(--primary);
-      color: var(--bg-main);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      box-shadow: 0 4px 14px var(--primary-glow);
     }
 
     button[type="submit"]:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--primary-glow);
     }
 
     button[type="reset"] {
-      background-color: var(--bg-card);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
+      background: rgba(14, 22, 40, 0.9);
+      color: var(--text-body);
+      border: 1px solid var(--border-subtle);
     }
 
     button[type="reset"]:hover {
-      background-color: var(--border-color);
+      background: rgba(22, 34, 66, 0.9);
+      color: #ffffff;
+      border-color: var(--text-muted);
     }
 
+    /* Pie de Página */
     footer {
-      background-color: #0b1120;
-      border-top: 2px solid var(--border-color);
-      padding: 2rem 1.5rem;
+      background: #050811;
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     footer p {
       color: var(--text-muted);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
     address {
       font-style: normal;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
   </style>
 </head>
@@ -316,8 +360,8 @@
     </nav>
   </header>
 
-  <!-- Contenedor Principal del Formulario -->
-  <div class="main-wrapper">
+  <!-- Contenedor del Formulario -->
+  <div class="form-container">
     <main>
 
       <!-- Formulario Accesible y Validado Nativamente -->
@@ -332,7 +376,7 @@
           <legend>1. Datos Personales</legend>
 
           <!-- Input Text: Nombre Completo -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="nombre-completo">Nombre Completo *</label>
             <input 
               type="text" 
@@ -348,7 +392,7 @@
           </div>
 
           <!-- Input Email: Correo Electrónico Institucional -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="correo-institucional">Correo Electrónico Institucional *</label>
             <input 
               type="email" 
@@ -362,7 +406,7 @@
           </div>
 
           <!-- Input Tel: Teléfono (Decisión de Diseño 3 - Opción A: Marcado explícito de campo opcional) -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="telefono">Número de Teléfono (opcional)</label>
             <input 
               type="tel" 
@@ -377,7 +421,7 @@
           </div>
 
           <!-- Input Date: Fecha de Nacimiento con Rango Universitario -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="fecha-nacimiento">Fecha de Nacimiento *</label>
             <input 
               type="date" 
@@ -397,7 +441,7 @@
           <legend>2. Datos de Cuenta y Seguridad</legend>
 
           <!-- Input Text: Código de Estudiante con Validación de 7 Dígitos -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="codigo-estudiante">Código de Estudiante *</label>
             <input 
               type="text" 
@@ -412,7 +456,7 @@
           </div>
 
           <!-- Input Password: Contraseña con Complejidad -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="clave-acceso">Contraseña de Acceso *</label>
             <input 
               type="password" 
@@ -427,7 +471,7 @@
           </div>
 
           <!-- Input URL: Repositorio GitHub -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="url-github">Enlace al Perfil o Repositorio de GitHub *</label>
             <input 
               type="url" 
@@ -445,7 +489,7 @@
           <legend>3. Información Académica</legend>
 
           <!-- Input Number: Semestre Académico (1 al 10) -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="semestre">Semestre Académico Actual (1 al 10) *</label>
             <input 
               type="number" 
@@ -460,7 +504,7 @@
           </div>
 
           <!-- Input Number: Promedio Acumulado con Step 0.1 -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="promedio-acumulado">Promedio Ponderado Acumulado *</label>
             <input 
               type="number" 
@@ -476,18 +520,18 @@
           </div>
 
           <!-- Inputs Radio: Jornada Académica -->
-          <div class="form-group">
+          <div class="form-row">
             <label id="jornada-label">Jornada Académica *</label>
-            <div class="radio-group" role="radiogroup" aria-labelledby="jornada-label">
-              <div class="radio-item">
+            <div class="radio-stack" role="radiogroup" aria-labelledby="jornada-label">
+              <div class="radio-option">
                 <input type="radio" id="jornada-diurna" name="jornada" value="diurna" checked required>
                 <label for="jornada-diurna">Jornada Diurna (Campus Lagos del Cacique)</label>
               </div>
-              <div class="radio-item">
+              <div class="radio-option">
                 <input type="radio" id="jornada-nocturna" name="jornada" value="nocturna">
                 <label for="jornada-nocturna">Jornada Nocturna</label>
               </div>
-              <div class="radio-item">
+              <div class="radio-option">
                 <input type="radio" id="jornada-extendida" name="jornada" value="extendida">
                 <label for="jornada-extendida">Jornada Extendida / Fines de Semana</label>
               </div>
@@ -495,7 +539,7 @@
           </div>
 
           <!-- Select con Optgroup: Programa Académico -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="programa-academico">Programa Académico Matriculado *</label>
             <select id="programa-academico" name="programa_academico" required aria-describedby="ayuda-programa">
               <option value="" disabled selected>-- Seleccione su programa universitario --</option>
@@ -520,9 +564,9 @@
           <legend>4. Preferencias y Perfil</legend>
 
           <!-- Input Range con Output Reactivo Nativo -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="nivel-experiencia">Nivel de Experiencia en Programación (1 = Básico, 10 = Avanzado)</label>
-            <div class="range-container">
+            <div class="range-box">
               <input 
                 type="range" 
                 id="nivel-experiencia" 
@@ -538,29 +582,29 @@
           </div>
 
           <!-- Input Color: Color Temático -->
-          <div class="form-group horizontal">
+          <div class="form-row inline">
             <label for="color-tema">Color Temático del Perfil:</label>
-            <input type="color" id="color-tema" name="color_tema" value="#38bdf8" aria-describedby="ayuda-color">
+            <input type="color" id="color-tema" name="color_tema" value="#10b981" aria-describedby="ayuda-color">
             <span id="ayuda-color" class="help-text">Seleccione el color de acento de su interfaz.</span>
           </div>
 
           <!-- Inputs Checkbox: Áreas de Interés Técnico -->
-          <div class="form-group">
+          <div class="form-row">
             <label>Áreas de Interés Técnico:</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
+            <div class="checkbox-stack">
+              <div class="checkbox-option">
                 <input type="checkbox" id="interes-frontend" name="areas_interes[]" value="frontend" checked>
                 <label for="interes-frontend">Desarrollo Web Frontend y Accesibilidad</label>
               </div>
-              <div class="checkbox-item">
+              <div class="checkbox-option">
                 <input type="checkbox" id="interes-backend" name="areas_interes[]" value="backend" checked>
                 <label for="interes-backend">Arquitectura Backend y Microservicios</label>
               </div>
-              <div class="checkbox-item">
+              <div class="checkbox-option">
                 <input type="checkbox" id="interes-cloud" name="areas_interes[]" value="cloud">
                 <label for="interes-cloud">Computación en la Nube y DevOps</label>
               </div>
-              <div class="checkbox-item">
+              <div class="checkbox-option">
                 <input type="checkbox" id="interes-ia" name="areas_interes[]" value="ia">
                 <label for="interes-ia">Inteligencia Artificial y Machine Learning</label>
               </div>
@@ -568,7 +612,7 @@
           </div>
 
           <!-- Input File: Foto de Perfil con Accept -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="foto-perfil">Fotografía de Perfil Profesional *</label>
             <input 
               type="file" 
@@ -581,7 +625,7 @@
           </div>
 
           <!-- Textarea: Biografía Profesional -->
-          <div class="form-group">
+          <div class="form-row">
             <label for="biografia">Biografía Profesional y Perfil Técnico *</label>
             <textarea 
               id="biografia" 
@@ -596,8 +640,8 @@
           </div>
 
           <!-- Input Checkbox: Términos y Condiciones -->
-          <div class="form-group">
-            <div class="checkbox-item">
+          <div class="form-row">
+            <div class="checkbox-option">
               <input type="checkbox" id="acepta-terminos" name="acepta_terminos" required>
               <label for="acepta-terminos">Acepto los términos académicos, condiciones y política de tratamiento de datos personales de la UDES *</label>
             </div>
@@ -605,7 +649,7 @@
         </fieldset>
 
         <!-- Botones de Acción del Formulario -->
-        <div class="actions">
+        <div class="button-group">
           <button type="reset">Limpiar Formulario</button>
           <button type="submit">Enviar Registro Académico</button>
         </div>

@@ -9,17 +9,26 @@
   <title>Julián Dallos | Portafolio Web e Ingeniería de Sistemas UDES</title>
   <style>
     :root {
-      --bg-main: #0f172a;
-      --bg-surface: #1e293b;
-      --bg-card: #334155;
-      --primary: #38bdf8;
-      --primary-hover: #0ea5e9;
-      --secondary: #818cf8;
-      --accent: #34d399;
-      --text-main: #f8fafc;
+      --bg-canvas: #070a13;
+      --bg-card: rgba(16, 24, 46, 0.75);
+      --bg-card-hover: rgba(22, 34, 66, 0.85);
+      --bg-surface: #0e1628;
+      --primary: #10b981;
+      --primary-glow: rgba(16, 185, 129, 0.25);
+      --primary-hover: #059669;
+      --secondary: #6366f1;
+      --secondary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #38bdf8;
+      --warning: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-body: #cbd5e1;
       --text-muted: #94a3b8;
-      --border-color: #475569;
-      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      --border-subtle: rgba(148, 163, 184, 0.15);
+      --border-focus: #10b981;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     * {
@@ -30,39 +39,64 @@
 
     body {
       font-family: var(--font-family);
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-body);
+      line-height: 1.7;
       padding: 0;
     }
 
+    /* Encabezado Superior y Navegación Principal */
     header {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border-bottom: 2px solid var(--primary);
-      padding: 2.5rem 1.5rem 1.5rem;
+      background: linear-gradient(180deg, rgba(14, 22, 40, 0.95) 0%, rgba(7, 10, 19, 0.85) 100%);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.6rem;
+      font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(135deg, #ffffff 40%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     header p {
-      color: var(--primary);
+      color: var(--accent);
       font-size: 1.1rem;
       font-weight: 500;
-      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.8rem;
     }
 
     nav {
-      background-color: rgba(30, 41, 59, 0.9);
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
+      background: rgba(16, 24, 46, 0.85);
+      border: 1px solid var(--border-subtle);
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-lg);
       margin: 0 auto;
-      max-width: 950px;
+      max-width: 1020px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
     nav ul {
@@ -70,36 +104,38 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.6rem;
     }
 
     nav a {
-      color: var(--text-main);
+      color: var(--text-body);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      font-size: 0.9rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     nav a:hover, nav a:focus {
-      background-color: var(--primary);
-      color: var(--bg-main);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
       outline: 2px solid var(--primary);
+      transform: translateY(-1px);
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
+    /* Estructura Principal del Contenido */
+    .layout-wrapper {
+      max-width: 1200px;
+      margin: 2.5rem auto;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: 2.3fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 340px;
+      gap: 2.5rem;
     }
 
-    @media (max-width: 860px) {
-      .container {
+    @media (max-width: 992px) {
+      .layout-wrapper {
         grid-template-columns: 1fr;
       }
     }
@@ -110,147 +146,169 @@
       gap: 2.5rem;
     }
 
+    /* Tarjetas de Sección Semánticas */
     section {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.75rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5);
+      position: relative;
     }
 
     section h2 {
-      color: var(--primary);
-      font-size: 1.5rem;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0.5rem;
+      font-size: 1.6rem;
+      color: var(--text-main);
       margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    section h2::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      border-radius: 4px;
     }
 
     section h3 {
-      color: var(--secondary);
-      font-size: 1.2rem;
+      color: var(--accent);
+      font-size: 1.25rem;
       margin-top: 1.25rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Componente de Perfil Profesional */
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1.75rem 0;
+      background: rgba(14, 22, 40, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      text-align: center;
     }
 
     figure {
-      margin: 1.5rem 0;
-      text-align: center;
-      background-color: var(--bg-card);
-      padding: 1rem;
-      border-radius: 8px;
+      margin: 0;
     }
 
     figure img {
       width: 150px;
       height: 150px;
-      object-fit: cover;
       border-radius: 50%;
+      object-fit: cover;
       border: 3px solid var(--primary);
-      display: inline-block;
+      box-shadow: 0 0 20px var(--primary-glow);
     }
 
     figcaption {
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
+      margin-top: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       font-style: italic;
     }
 
-    ul, ol {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    li {
-      margin-bottom: 0.45rem;
-    }
-
-    dl {
-      background-color: var(--bg-card);
-      padding: 1rem 1.25rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-
-    dt {
-      font-weight: bold;
-      color: var(--primary);
-      margin-top: 0.5rem;
-    }
-
-    dt:first-child {
-      margin-top: 0;
-    }
-
-    dd {
-      margin-left: 1rem;
-      margin-bottom: 0.75rem;
-      color: var(--text-muted);
-    }
-
+    /* Artículos Autocontenidos para Proyectos y Logros */
     article {
-      background-color: var(--bg-card);
-      border-left: 4px solid var(--secondary);
-      padding: 1.25rem;
-      border-radius: 6px;
-      margin-bottom: 1.25rem;
+      background: rgba(14, 22, 40, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     article:last-of-type {
       margin-bottom: 0;
     }
 
+    article:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+
     article h3 {
       margin-top: 0;
+      font-size: 1.25rem;
       color: var(--text-main);
-      font-size: 1.2rem;
     }
 
     article time {
       display: inline-block;
       font-size: 0.85rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
       font-weight: 600;
-    }
-
-    article p {
-      margin-bottom: 0.5rem;
+      color: var(--primary);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(16, 185, 129, 0.2);
     }
 
     article a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-top: 0.75rem;
+      transition: color 0.2s ease;
+    }
+
+    article a:hover, article a:focus {
+      color: var(--accent);
       text-decoration: underline;
-      display: inline-block;
-      margin-top: 0.25rem;
-      font-weight: 500;
     }
 
-    article a:hover {
-      color: var(--primary-hover);
-    }
-
+    /* Elementos Multimedia Accesibles */
     video {
-      max-width: 100%;
+      width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       background-color: #000;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     }
 
+    .video-box {
+      margin: 1.5rem 0;
+      background: rgba(14, 22, 40, 0.6);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Preguntas Frecuentes Nativas */
     details {
-      background-color: var(--bg-card);
-      padding: 0.85rem 1.25rem;
-      border-radius: 8px;
-      margin-bottom: 0.75rem;
-      cursor: pointer;
-      border: 1px solid var(--border-color);
+      background: rgba(14, 22, 40, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.85rem;
+      transition: background 0.2s ease;
+    }
+
+    details[open] {
+      border-color: var(--secondary);
+      background: rgba(22, 34, 66, 0.75);
     }
 
     summary {
-      font-weight: bold;
+      font-weight: 700;
       color: var(--text-main);
-      outline: none;
+      cursor: pointer;
+      font-size: 1rem;
     }
 
     summary:hover {
@@ -258,33 +316,37 @@
     }
 
     details p {
-      margin-top: 0.75rem;
-      color: var(--text-muted);
+      margin-top: 0.85rem;
+      color: var(--text-body);
+      font-size: 0.95rem;
     }
 
     mark {
-      background-color: #fef08a;
-      color: #713f12;
-      padding: 0.1rem 0.35rem;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fde047;
+      padding: 0.15rem 0.4rem;
       border-radius: 4px;
       font-weight: 600;
+      border: 1px solid rgba(245, 158, 11, 0.4);
     }
 
+    /* Barra Lateral de Habilidades Semánticas */
     aside {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
       height: fit-content;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.5);
     }
 
     aside h2 {
-      font-size: 1.3rem;
-      color: var(--secondary);
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.4rem;
+      font-size: 1.35rem;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     aside h3 {
@@ -294,44 +356,74 @@
       margin-bottom: 0.5rem;
     }
 
-    aside ul {
-      list-style-type: square;
-      margin-left: 1.25rem;
+    ul, ol {
+      margin-left: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+      font-size: 0.93rem;
+    }
+
+    dl {
+      background: rgba(14, 22, 40, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    dt {
+      font-weight: bold;
+      color: var(--accent);
+      font-size: 0.92rem;
+      margin-top: 0.6rem;
+    }
+
+    dt:first-of-type {
+      margin-top: 0;
+    }
+
+    dd {
+      margin-left: 0.75rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
     }
 
     aside a {
       color: var(--primary);
       text-decoration: none;
+      font-weight: 500;
     }
 
     aside a:hover {
       text-decoration: underline;
     }
 
+    /* Pie de Página Semántico */
     footer {
-      background-color: #0b1120;
-      border-top: 2px solid var(--border-color);
-      padding: 2.5rem 1.5rem 2rem;
+      background: #050811;
+      border-top: 1px solid var(--border-subtle);
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     footer nav {
-      margin-bottom: 1.5rem;
-      background-color: transparent;
+      background: transparent;
+      border: none;
+      box-shadow: none;
       padding: 0;
-    }
-
-    footer p {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     address {
       font-style: normal;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
+      font-size: 0.92rem;
+      line-height: 1.9;
     }
 
     address a {
@@ -346,7 +438,7 @@
 
     small {
       display: block;
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
       color: #64748b;
       font-size: 0.85rem;
     }
@@ -374,8 +466,8 @@
     </nav>
   </header>
 
-  <!-- Contenedor de Estructura de Dos Columnas -->
-  <div class="container">
+  <!-- Contenedor Estructural en Dos Columnas -->
+  <div class="layout-wrapper">
 
     <!-- Contenido Principal -->
     <main>
@@ -384,71 +476,73 @@
       <section id="sobre-mi">
         <h2>Sobre Mí y Perfil Profesional</h2>
         <p>
-          Julián Dallos es un estudiante de séptimo semestre de <strong>Ingeniería de Sistemas</strong> en la Universidad de Santander (UDES), campus Bucaramanga. Su formación técnica y académica está orientada hacia el desarrollo de soluciones de software escalables, arquitectura orientada a servicios, optimización de bases de datos relacionales y la aplicación rigurosa de estándares semánticos HTML5 y directrices de accesibilidad web universal (WCAG 2.1).
+          Julián Dallos es un estudiante de séptimo semestre de <strong>Ingeniería de Sistemas</strong> en la Universidad de Santander (UDES), campus Bucaramanga. Su formación técnica y vocación profesional se enfocan en el diseño e implementación de arquitecturas de software distribuidas, backend de alto desempeño, integración continua y observabilidad, sustentados en estándares web semánticos HTML5 y directrices internacionales de accesibilidad universal (WCAG 2.1).
         </p>
 
-        <!-- Figura con Fotografía de Perfil Profesional -->
-        <figure>
-          <img src="img/perfil.jpg" alt="Fotografía profesional de Julián Dallos en la Universidad de Santander" width="150" height="150" loading="eager">
-          <figcaption>Figura 1: Fotografía de perfil profesional — Julián Dallos (Ingeniería de Sistemas UDES).</figcaption>
-        </figure>
+        <!-- Figura con Imagen de Perfil y Figcaption Semántico -->
+        <div class="profile-card">
+          <figure>
+            <img src="img/perfil.jpg" alt="Fotografía profesional de Julián Dallos en la Universidad de Santander" width="150" height="150" loading="eager">
+            <figcaption>Figura 1: Fotografía de perfil profesional — Julián Dallos (Ingeniería de Sistemas UDES).</figcaption>
+          </figure>
+        </div>
       </section>
 
       <!-- Sección 2: Proyectos de Software -->
       <section id="proyectos">
         <h2>Proyectos de Software Destacados</h2>
-        <p>Módulos de ingeniería y aplicaciones autónomas desarrolladas con enfoque en calidad de código y rendimiento:</p>
+        <p>A continuación se describen desarrollos de ingeniería con arquitecturas desacopladas y estándares rigurosos de código:</p>
 
         <!-- Artículo de Proyecto 1 -->
-        <article id="proyecto-inventarios">
-          <h3>Sistema de Gestión de Inventarios en la Nube</h3>
+        <article id="proyecto-iot-inventarios">
+          <h3>AeroSync Cloud: Plataforma de Telemetría IoT e Inventarios Críticos</h3>
           <time datetime="2026-03-10">10 de marzo de 2026</time>
           <p>
-            Plataforma web distribuida para la administración, trazabilidad y control de inventarios en tiempo real para el sector comercial. Implementa una arquitectura basada en microservicios, autenticación stateless con JWT, cache distribuido y generación automatizada de reportes analíticos.
+            Plataforma en la nube para el monitoreo distribuido, geolocalización y trazabilidad en tiempo real de insumos industriales de alta criticidad. Implementa ingestión asíncrona de eventos, almacenamiento persistente relacional y paneles de control analíticos con baja latencia.
           </p>
           <p>
-            <strong>Tecnologías utilizadas:</strong> Node.js, Express, PostgreSQL, Docker, Redis, RESTful APIs.
+            <strong>Tecnologías aplicadas:</strong> Node.js, Express, PostgreSQL, Redis, Docker, WebSockets y AWS S3.
           </p>
-          <a href="https://github.com/dallosjulian/sistema-inventarios-cloud" target="_blank" rel="noopener noreferrer">Ver repositorio del proyecto en GitHub (Abre en ventana nueva)</a>
+          <a href="https://github.com/dallosjulian/aerosync-cloud-inventory" target="_blank" rel="noopener noreferrer">Ver repositorio del proyecto en GitHub (Abre en nueva pestaña)</a>
         </article>
 
         <!-- Artículo de Proyecto 2 -->
-        <article id="proyecto-pagos">
-          <h3>Microservicio de Procesamiento de Pagos Seguros</h3>
+        <article id="proyecto-pasarela-pagos">
+          <h3>QuantumPay Gateway: Motor Idempotente de Transacciones Seguras</h3>
           <time datetime="2026-04-18">18 de abril de 2026</time>
           <p>
-            Motor de transacciones financieras asíncronas con tolerancia a fallos, enrutamiento idempotente y cumplimiento de estándares de seguridad OWASP. Diseñado bajo el patrón de arquitectura hexagonal (Ports &amp; Adapters) con mensajería distribuida para procesamiento desacoplado.
+            Microservicio financiero de alta concurrencia diseñado bajo la arquitectura hexagonal (Ports &amp; Adapters). Integra mecanismos de tolerancia a fallos, enrutamiento idempotente de pagos, cifrado asimétrico y mensajería distribuida con registro auditable.
           </p>
           <p>
-            <strong>Tecnologías utilizadas:</strong> Java 17, Spring Boot, Apache Kafka, PostgreSQL, Docker, OAuth2.
+            <strong>Tecnologías aplicadas:</strong> Java 17, Spring Boot, Apache Kafka, PostgreSQL, Docker, OAuth2 / JWT.
           </p>
-          <a href="https://github.com/dallosjulian/microservicio-pagos-seguros" target="_blank" rel="noopener noreferrer">Ver código fuente en GitHub (Abre en ventana nueva)</a>
+          <a href="https://github.com/dallosjulian/quantumpay-secure-gateway" target="_blank" rel="noopener noreferrer">Consultar código fuente en GitHub (Abre en nueva pestaña)</a>
         </article>
       </section>
 
       <!-- Sección 3: Logros y Certificaciones (Decisión de Diseño 1 - Opción A) -->
       <section id="logros">
         <h2>Logros y Certificaciones Académicas</h2>
-        <p>Credenciales técnicas independientes y certificaciones profesionales que avalan competencias en ingeniería de software:</p>
+        <p>Acreditaciones técnicas autónomas que certifican conocimientos especializados en ingeniería web y computación en la nube:</p>
 
         <!-- Artículo de Logro 1 -->
-        <article id="cert-frontend-wcag">
+        <article id="cert-w3c-wcag">
           <h3>Certificación Profesional en Desarrollo Web Frontend y Accesibilidad W3C</h3>
           <time datetime="2026-02-20">20 de febrero de 2026</time>
           <p>
-            Acreditación especializada en maquetación semántica HTML5, diseño responsivo avanzado con CSS3 y cumplimiento estricto de las directrices WCAG 2.1 Nivel AA para la creación de interfaces web universales e inclusivas.
+            Acreditación oficial en maquetación semántica HTML5, diseño responsivo avanzado con CSS3 y verificación rigurosa de conformidad con las directrices WCAG 2.1 Nivel AA para garantizar experiencias digitales incluyentes y universales.
           </p>
-          <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">Consultar estándar oficial WCAG W3C (Abre en ventana nueva)</a>
+          <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">Ver directrices WCAG W3C (Abre en nueva pestaña)</a>
         </article>
 
         <!-- Artículo de Logro 2 -->
-        <article id="cert-cloud-architecture">
+        <article id="cert-cloud-architect">
           <h3>Acreditación Internacional en Arquitectura Cloud y Microservicios</h3>
           <time datetime="2026-05-12">12 de mayo de 2026</time>
           <p>
-            Formación técnica avanzada en diseño de soluciones nativas en la nube, contenedorización con Docker, orquestación de contenedores, patrones de resiliencia (Circuit Breaker) y automatización de despliegues continuos CI/CD.
+            Certificación en diseño de sistemas nativos en la nube, contenedorización de servicios con Docker, resiliencia ante caídas (Circuit Breaker) y automatización de tuberías CI/CD para despliegues empresariales confiables.
           </p>
-          <a href="https://udes.edu.co" target="_blank" rel="noopener noreferrer">Verificación institucional UDES (Abre en ventana nueva)</a>
+          <a href="https://udes.edu.co" target="_blank" rel="noopener noreferrer">Validar credencial académica en UDES (Abre en nueva pestaña)</a>
         </article>
       </section>
 
@@ -456,21 +550,23 @@
       <section id="multimedia">
         <h2>Presentación Multimedia y Accesibilidad</h2>
         <p>
-          Recurso audiovisual de presentación personal y académica con controles interactivos nativos, soporte multiformato y subtítulos sincronizados en formato WebVTT, garantizando conformidad con el principio de Perceptibilidad de WCAG 2.1.
+          Contenido audiovisual de presentación académica integrado mediante el elemento nativo <code>&lt;video&gt;</code>, con soporte multiformato, controles completos y subtítulos sincronizados en formato WebVTT para asegurar el principio de Perceptibilidad de WCAG 2.1:
         </p>
 
-        <figure>
-          <video controls poster="img/miniatura-intro.jpg" preload="metadata" width="720" height="405">
-            <source src="video/intro.mp4" type="video/mp4">
-            <source src="video/intro.webm" type="video/webm">
-            <track kind="captions" src="video/intro-es.vtt" srclang="es" label="Español" default>
-            <p>
-              Su navegador web no soporta la reproducción nativa de video en HTML5. Puede
-              <a href="video/intro.mp4" download>descargar el video de presentación aquí</a>.
-            </p>
-          </video>
-          <figcaption>Figura 2: Video de presentación académica de Julián Dallos con subtítulos en español (intro-es.vtt).</figcaption>
-        </figure>
+        <div class="video-box">
+          <figure>
+            <video controls poster="img/miniatura-intro.jpg" preload="metadata" width="720" height="405">
+              <source src="video/intro.mp4" type="video/mp4">
+              <source src="video/intro.webm" type="video/webm">
+              <track kind="captions" src="video/intro-es.vtt" srclang="es" label="Español" default>
+              <p>
+                Su navegador web no soporta la reproducción directa de video HTML5. Puede
+                <a href="video/intro.mp4" download>descargar el video de presentación aquí</a>.
+              </p>
+            </video>
+            <figcaption>Figura 2: Video de presentación académica de Julián Dallos con subtítulos en español (intro-es.vtt).</figcaption>
+          </figure>
+        </div>
       </section>
 
       <!-- Sección 5: Preguntas Frecuentes -->
@@ -480,67 +576,67 @@
         <details>
           <summary>¿Cuál es la importancia de la estructura semántica en el desarrollo web?</summary>
           <p>
-            La semántica permite a los navegadores, motores de búsqueda y tecnologías de asistencia comprender el <mark>propósito y significado estructural</mark> de cada bloque de contenido, optimizando la accesibilidad universal, el mantenimiento del código y el posicionamiento SEO orgánico.
+            La semántica permite que navegadores, motores de búsqueda y lectores de pantalla interpreten el <mark>propósito e intención estructural</mark> de la información más allá de su representación visual, favoreciendo la indexación SEO y la inclusión digital universal.
           </p>
         </details>
 
         <details>
           <summary>¿Cómo contribuye el uso del formato WebVTT a la accesibilidad digital?</summary>
           <p>
-            El formato WebVTT garantiza que personas con discapacidades auditivas o usuarios en entornos de reproducción silenciosa accedan al mensaje sonoro, satisfaciendo el <mark>Criterio de Éxito 1.2.2 de WCAG 2.1</mark> para subtítulos pregrabados.
+            El estándar WebVTT permite que usuarios con déficit auditivo o en ambientes silenciosos accedan a la información hablada, satisfaciendo el <mark>Criterio de Éxito 1.2.2 de WCAG 2.1</mark> para subtítulos pregrabados.
           </p>
         </details>
 
         <details>
           <summary>¿Por qué se debe validar el código HTML mediante los estándares del W3C?</summary>
           <p>
-            La validación formal W3C certifica la <mark>interoperabilidad multiplataforma</mark>, previene fallos sintácticos de renderizado entre navegadores y garantiza la calidad técnica exigida en la formación de un Ingeniero de Sistemas profesional.
+            La validación estricta del W3C certifica la <mark>interoperabilidad multiplataforma</mark>, descarta inconsistencias sintácticas entre motores de navegación y consolida el rigor metodológico propio de un Ingeniero de Sistemas.
           </p>
         </details>
       </section>
 
     </main>
 
-    <!-- Barra Lateral: Habilidades y Listas Técnicas -->
+    <!-- Barra Lateral Complementaria de Habilidades -->
     <aside id="habilidades" aria-label="Habilidades técnicas y glosario">
       <h2>Habilidades Técnicas</h2>
 
       <!-- Lista No Ordenada: Tecnologías de Software y Backend -->
-      <h3>Tecnologías de Backend y Software</h3>
-      <p>Herramientas y lenguajes aplicados en la construcción de sistemas robustos:</p>
+      <h3>Tecnologías Backend y Software</h3>
+      <p>Herramientas dominadas en ingeniería de software:</p>
       <ul>
-        <li><strong>Lenguajes:</strong> Java, JavaScript (ES6+), TypeScript, SQL.</li>
-        <li><strong>Frameworks:</strong> Spring Boot, Node.js, Express.js.</li>
-        <li><strong>Bases de Datos:</strong> PostgreSQL, MySQL, Redis.</li>
-        <li><strong>DevOps y Nube:</strong> Docker, Git, GitHub Actions, AWS.</li>
-        <li><strong>Estándares:</strong> HTML5 Semántico, CSS3, WAI-ARIA.</li>
+        <li><strong>Lenguajes:</strong> Java, TypeScript, JavaScript, SQL.</li>
+        <li><strong>Frameworks:</strong> Spring Boot, Express.js, Node.js.</li>
+        <li><strong>Bases de Datos:</strong> PostgreSQL, Redis, MySQL.</li>
+        <li><strong>Infraestructura:</strong> Docker, Git, CI/CD, AWS.</li>
+        <li><strong>Estándares Web:</strong> HTML5 Semántico, CSS3, WAI-ARIA.</li>
       </ul>
 
       <!-- Lista Ordenada: Ciclo de Desarrollo y Despliegue -->
       <h3>Ciclo de Desarrollo y Despliegue</h3>
-      <p>Metodología secuencial de ingeniería aplicada en cada proyecto:</p>
+      <p>Flujo metodológico secuencial de ingeniería:</p>
       <ol>
-        <li><strong>Análisis y Requisitos:</strong> Definición de especificaciones y modelos C4.</li>
-        <li><strong>Diseño de Arquitectura:</strong> Modelado semántico y patrones de software.</li>
-        <li><strong>Desarrollo y TDD:</strong> Implementación limpia y pruebas unitarias.</li>
-        <li><strong>Auditoría WCAG:</strong> Verificación de accesibilidad y validación W3C.</li>
-        <li><strong>Despliegue CI/CD:</strong> Contenedorización y publicación continua.</li>
+        <li><strong>Especificación de Requisitos:</strong> Modelado de arquitectura y casos de uso.</li>
+        <li><strong>Diseño de Interfaces Semánticas:</strong> Wireframes accesibles y jerarquía HTML5.</li>
+        <li><strong>Construcción y Testing:</strong> Codificación limpia aplicando principios SOLID y TDD.</li>
+        <li><strong>Auditoría WCAG:</strong> Verificación de contraste, teclado y validación W3C.</li>
+        <li><strong>Integración Continua:</strong> Automatización de pipelines y despliegue en la nube.</li>
       </ol>
 
-      <!-- Lista de Definición: Glosario de Términos Técnicos -->
+      <!-- Lista de Definición: Glosario de Ingeniería Web -->
       <h3>Glosario de Ingeniería Web</h3>
       <dl>
         <dt>Semántica Web</dt>
-        <dd>Uso riguroso de elementos HTML según su significado funcional intrínseco, favoreciendo la interpretación computacional del contenido.</dd>
+        <dd>Asignación de significado funcional explícito a los elementos del documento HTML según el contenido que representan.</dd>
 
         <dt>Accesibilidad WCAG 2.1</dt>
-        <dd>Pautas técnicas de accesibilidad estructuradas en cuatro principios esenciales: Perceptible, Operable, Comprensible y Robusto.</dd>
+        <dd>Estándar internacional compuesto por cuatro principios fundamentales: Perceptible, Operable, Comprensible y Robusto.</dd>
 
         <dt>Clean Code</dt>
-        <dd>Prácticas de ingeniería enfocadas en escribir código legible, testeable, mantenible y desacoplado mediante principios SOLID.</dd>
+        <dd>Filosofía de desarrollo orientada a estructurar código legible, modular, fácilmente extensible y mantenible en el tiempo.</dd>
       </dl>
 
-      <!-- Datos Académicos del Estudiante -->
+      <!-- Datos Académicos -->
       <h3>Información Académica</h3>
       <p><strong>Estudiante:</strong> Julián Dallos</p>
       <p><strong>Programa:</strong> Ingeniería de Sistemas</p>
@@ -569,7 +665,7 @@
     <address>
       Contacto institucional: <a href="mailto:j.dallos@correo.udes.edu.co">j.dallos@correo.udes.edu.co</a><br>
       Perfil de GitHub: <a href="https://github.com/dallosjulian" target="_blank" rel="noopener noreferrer">github.com/dallosjulian</a><br>
-      Universidad de Santander (UDES), Campus Lagos del Cacique, Bucaramanga, Santander, Colombia.
+      Universidad de Santander (UDES), Campus Universitario Lagos del Cacique, Bucaramanga, Santander, Colombia.
     </address>
 
     <small>&copy; 2026 Julián Dallos — Universidad de Santander (UDES). Todos los derechos reservados.</small>
