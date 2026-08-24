@@ -3,7 +3,7 @@
 [![HTML5 Validated](https://img.shields.io/badge/HTML5-W3C_Validated-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://validator.w3.org/)
 [![WCAG 2.1 AA](https://img.shields.io/badge/WCAG_2.1-Level_AA-005A9C?style=for-the-badge&logo=w3c&logoColor=white)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 [![UDES](https://img.shields.io/badge/UDES-Ingenier%C3%ADa_de_Sistemas-15803d?style=for-the-badge)](https://udes.edu.co/)
-[![Rúbrica R2-Lab](https://img.shields.io/badge/Calificaci%C3%B3n_Esperada-5.0%20%2F%205.0-gold?style=for-the-badge)](https://github.com/dallosjulian/dallos-post1-u2)
+
 
 Este repositorio contiene la solución técnica y pedagógica completa del laboratorio de post-contenido correspondiente a la **Unidad 2: Programación Web (HTML5 Semántico, Accesibilidad Universal WCAG 2.1 y Formularios Nativos Avanzados)**, desarrollado para el programa de Ingeniería de Sistemas de la **Universidad de Santander (UDES)**, sede Bucaramanga.
 
